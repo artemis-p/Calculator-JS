@@ -11,13 +11,18 @@ body {
 
 .wrapper {
     width: 400px;
-    border: 3px solid red;
+    /* border: 3px solid red; */
     background-color: black;
     color: white;
 }
 
 .calc-button-row {
-    border: 3px solid blue;
+    /* border: 3px solid blue; */
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    margin-bottom: 0.5%;
+    /* to add the lines in the bottom */
 }
 
 .screen {
@@ -25,4 +30,43 @@ body {
     font-family: 'Courier New', 'Courier New', Courier, monospace;
     padding: 20px 5px;
     font-size: 40px;
+}
+
+.calc-button {
+    background-color: #d8d9db;
+    color: #000000;
+    border: none;
+    font-size: 40px;
+    height: 100px;
+    flex-basis: 24.5%;
+    /* we don't have height, as we are working with flex, but we have flex-basis */
+}
+
+
+.calc-button:hover {
+    background-color: #ebebeb;
+}
+.calc-button:active {
+    background-color: #bbbcbe;
+}
+
+.double {
+    flex-basis: 49.7%;
+}
+
+.triple {
+    flex-basis: 74.8%;
+}
+
+.calc-button:last-child {
+    background-color: #df974c;
+    color: white;
+}
+
+.calc-button:last-child:hover {
+    background-color: #dfb07e;
+}
+
+.calc-button:last-child:active {
+    background-color: #e6ac6f;
 }
