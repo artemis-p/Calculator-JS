@@ -14,11 +14,19 @@ function buttonClick(value) {
         //this is a number
         handleNumber(value);
     }
+    screen.innerText = buffer; // it's always going to rerender the screen no matter what's in the buffer
 }
 
 // from the buttonClick function I would like to go to either handle a symbol or a number
 
-function handleSymbol(symbol){}
+function handleSymbol(symbol){
+    if (symbol === 'C') {
+        buffer = '0';
+        runningTotal = '0';
+    }
+}
+
+
 
 function handleNumber(numberString){
     if (buffer === "0") {
@@ -26,7 +34,6 @@ function handleNumber(numberString){
     } else {
         buffer += numberString;
     }
-    screen.innerText = buffer;
 }
 
 
