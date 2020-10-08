@@ -1,5 +1,5 @@
 let runningTotal = 0;
-let buffer = "0"; // what's on screen
+let buffer = '0'; // what's on screen
 let previousOperator; // the operator that was clicked 
 
 const screen = document.querySelector('.screen');
@@ -20,16 +20,56 @@ function buttonClick(value) {
 // from the buttonClick function I would like to go to either handle a symbol or a number
 
 function handleSymbol(symbol){
-    if (symbol === 'C') {
-        buffer = '0';
-        runningTotal = '0';
+    switch (symbol) {
+        case 'C':
+            buffer = '0';
+            runningTotal = 0;
+            break;
+        case '+':
+        case '-':
+        case '*':
+        case '/':
+            handleMath(symbol);
+            break;
     }
+}
+
+function handleMath(symbol) {
+    if (buffer === '0') {
+        //do nothing
+        return;
+    }
+
+    const intBuffer = parseInt(buffer); //turns string into a number, so this is going to be a number
+
+    if (runningTotal === 0) {
+        runningTotal = intBuffer;
+    } else {
+        flushOperation(intBuffer);
+    }
+
+    previousOperator = symbol;
+
+    buffer = '0';
+}
+
+function flushOperation(intBuffer){
+    if (previousOperator === '+') {
+        runningTotal += intBuffer;
+    } else if (previousOperator === '-') {
+        runningTotal -= intBuffer;
+    } else if (previousOperator === '*') {
+        runningTotal *= intBuffer;
+    } else {
+        runningTotal /= intBuffer;
+    }
+    console.log('running total', runningTotal);
 }
 
 
 
 function handleNumber(numberString){
-    if (buffer === "0") {
+    if (buffer === '0') {
         buffer = numberString; 
     } else {
         buffer += numberString;
