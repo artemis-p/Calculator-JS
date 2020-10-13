@@ -26,9 +26,9 @@ function handleSymbol(symbol){
             runningTotal = 0;
             break;
         case '+':
-        case '-':
-        case '*':
-        case '/':
+        case '−':
+        case '×':
+        case '÷':
             handleMath(symbol);
             break;
     }
@@ -54,15 +54,17 @@ function handleMath(symbol) {
 }
 
 function flushOperation(intBuffer){
+    console.log(intBuffer);
     if (previousOperator === '+') {
         runningTotal += intBuffer;
-    } else if (previousOperator === '-') {
+    } else if (previousOperator === '−') {
         runningTotal -= intBuffer;
-    } else if (previousOperator === '*') {
+    } else if (previousOperator === '×') {
         runningTotal *= intBuffer;
     } else {
         runningTotal /= intBuffer;
     }
+    console.log('previousOperator', previousOperator);
     console.log('running total', runningTotal);
 }
 
